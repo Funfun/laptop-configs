@@ -1,0 +1,9 @@
+" vim +BundleInstall! +BundleClean +q
+
+Plugin 'rizzatti/dash.vim'
+Plugin 'nsf/gocode', {'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
+Plugin 'leafgarland/typescript-vim'
+" Plugin 'jodosha/vim-godebug'
+" Plugin 'Shougo/vimshell.vim'
+" Plugin 'Shougo/vimproc.vim'
+" Plugin 'sebdah/vim-delve'

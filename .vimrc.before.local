@@ -1,0 +1,4 @@
+" loads before .vimrc
+
+let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'ruby', 'python', 'javascript', 'html', 'go', 'misc']
+

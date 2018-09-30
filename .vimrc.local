@@ -1,0 +1,51 @@
+" overwrites for .vimrc
+
+" Overwrite general settings
+
+let mapleader = ","
+set nolist
+let g:indent_guides_enable_on_vim_startup = 0
+
+"  Dash.app trigger
+nmap <silent> <leader>d <Plug>DashSearch
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>l <Plug>(go-decls-dir)
+autocmd FileType go nmap <Leader>r <Plug>(go-run)
+let g:go_fmt_command = "goimports"
+"" YouCompleteMe
+let g:ycm_key_list_previous_completion=['<Up>']
+
+"" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsListSnippets="<c-s-tab>"
+
+"autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+
+augroup save
+  au!
+  au FocusLost * wall
+augroup END
+
+set nohidden
+set nobackup
+set noswapfile
+set nowritebackup
+set autoread
+set autowrite
+set autowriteall
+set undodir=~/.vim/undo
+set undofile
+
